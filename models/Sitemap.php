@@ -445,6 +445,16 @@ class Sitemap extends Model
                 return;
             }
             foreach ($pages as $page) {
+                // Ignore page when noindex setting from Qball is set. Note:
+                // Key name is confusing, it is reversed. Value 0 = index, 1 =
+                // noindex.
+                if (isset($page->viewBag['meta_index']) AND
+                    is_numeric($page->viewBag['meta_index']) AND
+                    $page->viewBag['meta_index'] == 1)
+                {
+                    continue;
+                }
+
                 $result['items'][] = self::getStaticPageMenuItem($page);
             }
         }
