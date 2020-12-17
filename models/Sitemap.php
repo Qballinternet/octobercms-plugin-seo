@@ -122,7 +122,7 @@ class Sitemap extends Model
                 if (!is_array($apiResult)) {
                     continue;
                 }
-                
+
                 foreach ($apiResult as $itemInfo) {
                     if (!is_array($itemInfo)) {
                         continue;
@@ -419,7 +419,7 @@ class Sitemap extends Model
             return;
         }
 
-        $paramName = substr(trim($matches[1]), 1);            
+        $paramName = substr(trim($matches[1]), 1);
 
         return $paramName;
     }
@@ -441,7 +441,7 @@ class Sitemap extends Model
             }
             foreach ($pages as $page) {
                 $result['items'][] = self::getStaticPageMenuItem($page);
-            }            
+            }
         }
 
         return [$result];
