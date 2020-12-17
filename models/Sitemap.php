@@ -234,6 +234,11 @@ class Sitemap extends Model
 
     protected function addItemToSet($item, $url, $mtime = null, $alternateLocaleUrls = [])
     {
+        // Ignore 404
+        if (preg_match('/\/404$/i', $url)) {
+            return;
+        }
+
         if ($mtime instanceof \DateTime) {
             $mtime = $mtime->getTimestamp();
         }
